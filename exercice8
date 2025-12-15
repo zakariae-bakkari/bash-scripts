@@ -21,7 +21,7 @@ elif [[ -e $3 ]]; then
     echo " le fichier $3 existe deja"
 
     exit 1
-    
+
 else
     cat $1 $2 >> $3
     echo " concatenation reussie"

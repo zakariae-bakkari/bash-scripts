@@ -1,5 +1,0 @@
-#!/bin/bash
-
-contenu_actuel=$(cat $1)
-date > $1
-echo $contenu_acuel >> $1
