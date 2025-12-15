@@ -1,1 +1,52 @@
 #!/bin/bash
+
+if [[ ! -e agenda ]]; then
+   touch agenda
+fi
+
+while [[ choix != 6 ]]; do
+
+   echo "1. Ajouter une nouvelle fiche"
+   echo "2. Rechercher une fiche (avec une partie du nom)"
+   echo "3. Détruire une fiche"
+   echo "4. Modifier une fiche"
+   echo "5. Lister l’annuaire"
+   echo "6. Fin"
+   echo -n "votre chois ? : "
+
+   read choix
+
+   case $choix in
+      1)
+         echo "1. Ajouter une nouvelle fiche"
+         echo -n "entrer le nome : "
+         read nom
+         echo -n "entrer le tele : "
+         read tele
+         echo "$nom,$tele" >> agenda
+
+         ;;
+      2)
+         echo "2. Rechercher une fiche (avec une partie du nom): "
+         echo -n "enter le nom a rechecher : "
+         read nom
+         $(cat agenda | grep $nom)
+         if [[ $? != 0 ]]; then
+            echo "aucune fiche trouvee"
+         fi         
+         ;;
+      3)
+
+         ;;
+      4) 
+         ;;
+      5)
+        cat agenda
+         ;;
+      6)
+         echo "fin ..."
+         exit 1
+         ;;  
+      
+   esac
+done
