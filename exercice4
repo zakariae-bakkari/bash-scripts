@@ -1,0 +1,14 @@
+#!/bin/bash
+if [[ ! -d archives ]]; then
+    mkdir archives
+fi
+
+for i in $(ls)
+do
+	if [[ -f $i  ]]; then
+	 cp $i archives/
+
+fi
+done
+
+

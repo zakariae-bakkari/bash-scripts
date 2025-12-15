@@ -1,0 +1,6 @@
+#!/bin/bash
+for i 
+do 
+  head -n 5 $i
+  rm -i $i
+done

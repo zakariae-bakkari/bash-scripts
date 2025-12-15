@@ -1,0 +1,39 @@
+#!/bin/bash
+#exercice 7
+
+if [[ $# != 2 ]];then
+	echo "le nombre d'arguments est incorrect"
+	exit 1
+
+elif [[ ! -e $1 ]];then
+	echo "le fichier n'exist pas"
+	exit 1
+
+elif [[ ! -r $1 ]];then
+	echo "le fichier n'est pas copiable pas d'access lecture"
+	exit 1
+
+elif [[ ! -f $1 ]];then
+	echo "$1 n'est pas un fichier ordinaire"
+	exit 1
+
+elif [[ -e  $2 ]];then
+	echo "$2 exist deja"
+	exit 1
+
+elif [[ ! -w $(dirname $2) ]];then
+	echo "$(dirname $2) n'est pas accessible "
+	exit 1
+fi
+
+
+cp $1 $2 
+
+
+if [[ $? != 0 ]];then
+	echo "erreur : la copie a echoue"
+	exit 1
+fi
+
+echo "cocpie reussie"
+exit 0
