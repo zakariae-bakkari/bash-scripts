@@ -1,0 +1,4 @@
+#!/bin/bash
+echo -n "Entrez une suite de mots : "
+read ligne
+echo $ligne| wc -w

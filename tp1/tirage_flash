@@ -1,0 +1,16 @@
+#!/bin/bash
+
+nums=()
+
+while [[ ${#nums[@]} -lt 6 ]]
+do
+    n=$((RANDOM % 49 + 1))
+
+    # Vérifier si n est déjà tiré
+    if [[ ! " ${nums[@]} " =~ " $n " ]]; then
+        nums+=("$n")
+    fi
+done
+
+echo "Tirage : ${nums[@]}"
+

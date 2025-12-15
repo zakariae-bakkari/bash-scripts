@@ -1,0 +1,8 @@
+#!/bin/bash
+resultat=$(ls -l "$1")
+
+set -- $resultat
+
+echo "droits d'acces : $1"
+echo "taille : $5 octets"
+

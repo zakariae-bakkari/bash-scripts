@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Charger tous les noms d'utilisateurs dans un tableau
+users=($(cut -d: -f1 /etc/passwd))
+
+# Afficher le nombre total
+echo "Nombre total d'utilisateurs : ${#users[@]}"
+
+# Tirer un nom au hasard
+index=$(( RANDOM % ${#users[@]} ))
+
+echo "Utilisateur tiré au hasard : ${users[$index]}"
+

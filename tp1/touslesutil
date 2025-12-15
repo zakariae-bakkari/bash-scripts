@@ -1,0 +1,7 @@
+#!/bin/bash
+
+while read ligne
+do
+	user=${ligne%%:*}
+	echo "$user"
+done < /etc/passwd

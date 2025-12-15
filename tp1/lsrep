@@ -1,0 +1,10 @@
+#!/bin/bash
+read -a reps -p "Entrer un liste des nom de repertoires :"
+for rep in "${reps[@]}"
+do
+	
+	if [[ -d $rep  ]]
+	then
+	ls -l $rep
+	fi
+done

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+resultat=$(id)
+
+IFS='=()'
+
+set $resultat
+echo $2
+

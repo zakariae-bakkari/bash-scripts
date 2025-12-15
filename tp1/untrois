@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo -n 'Entrer une suite de mots : '
+read ligne
+set $ligne
+echo "$1 $3"

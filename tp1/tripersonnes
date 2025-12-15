@@ -1,0 +1,9 @@
+#!/bin/bash
+personnes=$(cat personnes)
+while read nom genre 
+do
+  if [[ "$genre" = "f" ]]
+  then echo $nom >> filles
+  else echo $nom >> garcons
+  fi
+done < personnes  

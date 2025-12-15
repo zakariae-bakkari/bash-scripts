@@ -1,0 +1,11 @@
+#!/bin/bash
+
+while read ligne
+do 
+	name=${ligne%%:*}
+
+	reste=${ligne#*:}
+	uid=${reste#*:}
+	uid=${uid%%:*}
+	echo "$name $uid"
+done < /etc/passwd
