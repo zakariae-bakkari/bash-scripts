@@ -1,7 +1,7 @@
 #!/bin/bash
 resultat=$(ls -l "$1")
 
-set -- $resultat
+set -- $resultat # -- utiliser pour evter le problem des ficier commence par - set crois que c'est une option
 
 echo "droits d'acces : $1"
 echo "taille : $5 octets"
