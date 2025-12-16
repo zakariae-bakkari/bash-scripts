@@ -1,12 +1,15 @@
 #!/bin/bash
 
-# Charger tous les noms d'utilisateurs dans un tableau
-users=($(cut -d: -f1 /etc/passwd))
+users=()
+IFS=:
+while read username rest; do
+    users+=("$username")
+done < /etc/passwd
 
-# Afficher le nombre total
+
 echo "Nombre total d'utilisateurs : ${#users[@]}"
 
-# Tirer un nom au hasard
+# tirer un nom au hasard (0 jusqua la taille du tableau)
 index=$(( RANDOM % ${#users[@]} ))
 
 echo "Utilisateur tiré au hasard : ${users[$index]}"
