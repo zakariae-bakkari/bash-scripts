@@ -1,25 +1,22 @@
 #!/bin/bash
 
-# Vérifier présence argument
-if [[ -z "$1" ]]; then
-    echo "Usage : $0 N"
+if [[ $# != 1  ]]; then
+    echo "il faut utiliser un argument"
     exit 1
 fi
 
-N=$1
+n=$1
 fact=1
 
-# Cas N = 0
-if [[ $N -eq 0 ]]; then
+# cas de  n = 0
+if [[ $n == 0 ]]; then
     echo 1
     exit 0
 fi
 
-for ((i=1; i<=N; i++))
+for ((i=1; i<=n; i++))
 do
     fact=$((fact * i))
 done
 
 echo "$fact"
-
-#!/bin/bash
