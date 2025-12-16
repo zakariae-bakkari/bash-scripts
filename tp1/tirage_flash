@@ -2,15 +2,20 @@
 
 nums=()
 
-while [[ ${#nums[@]} -lt 6 ]]
+while [[ ${#nums[@]} < 6 ]]
 do
     n=$((RANDOM % 49 + 1))
-
-    # Vérifier si n est déjà tiré
-    if [[ ! " ${nums[@]} " =~ " $n " ]]; then
+    existe=0
+    for x in ${nums[@]}; do
+        if [[ $x == $n ]]; then
+            existe=1
+            break
+        fi
+    done
+    if [[ $existe == 0 ]]; then
         nums+=("$n")
     fi
 done
 
-echo "Tirage : ${nums[@]}"
+echo "tirage : ${nums[@]}"
 
