@@ -1,5 +1,8 @@
 #!/bin/bash
-
+if [[ $# != 1 ]]; then
+    echo "il faut avoir un argument"
+    exit 1
+fi
 fact() {
     if [[ $1 -le 1 ]]; then
         echo 1
@@ -8,11 +11,7 @@ fact() {
     fi
 }
 
-# Vérifier argument
-if [[ -z "$1" ]]; then
-    echo "Usage : $0 N"
-    exit 1
-fi
+
 
 fact "$1"
 

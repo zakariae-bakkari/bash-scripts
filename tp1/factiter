@@ -6,6 +6,10 @@ if [[ $# != 1  ]]; then
 fi
 
 n=$1
+if [[ $n > 20 ]]; then
+    echo "$n est trop grand"
+    exit 1
+fi
 fact=1
 
 # cas de  n = 0
