@@ -1,6 +1,2 @@
 #!/bin/bash
-nom=${1##*/}
-if [[ -n $2 ]] then nom=${nom%$2}
-fi
-
-echo $nom
+echo ${1##*/}

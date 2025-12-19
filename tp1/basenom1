@@ -1,0 +1,4 @@
+#!/bin/bash
+nom=${1##*/}
+nom=${nom%$2}
+echo $nom

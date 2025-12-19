@@ -2,20 +2,20 @@
 
 nums=()
 
-while [[ ${#nums[@]} < 6 ]]
+while [[ ${#nums[*]} < 6 ]]
 do
     n=$((RANDOM % 49 + 1))
     existe=0
-    for x in ${nums[@]}; do
+    for x in ${nums[*]}; do
         if [[ $x == $n ]]; then
             existe=1
             break
         fi
     done
     if [[ $existe == 0 ]]; then
-        nums+=("$n")
+        nums[${#nums[*]}]=$n
     fi
 done
 
-echo "tirage : ${nums[@]}"
+echo "tirage : ${nums[*]}"
 

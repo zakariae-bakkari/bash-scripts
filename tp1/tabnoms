@@ -3,14 +3,14 @@
 users=()
 IFS=:
 while read username rest; do
-    users+=("$username")
+    users[${#users[*]}]=$username
 done < /etc/passwd
 
 
-echo "Nombre total d'utilisateurs : ${#users[@]}"
+echo "Nombre total d'utilisateurs : ${#users[*]}"
 
 # tirer un nom au hasard (0 jusqua la taille du tableau)
-index=$(( RANDOM % ${#users[@]} ))
+index=$(( RANDOM % ${#users[*]} ))
 
 echo "Utilisateur tiré au hasard : ${users[$index]}"
 
