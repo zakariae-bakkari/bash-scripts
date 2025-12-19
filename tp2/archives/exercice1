@@ -1,0 +1,6 @@
+#!/bin/bash
+
+temps_seconds=$1
+min=$(( temps_seconds / 60 ))
+rest_seconds=$(( temps_seconds % 60 ))
+echo "$min min: $rest_seconds s "

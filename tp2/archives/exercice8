@@ -1,0 +1,28 @@
+#!/bin/bash
+#exercice8
+if [[ $# != 3 ]];then
+   echo " nombre d'arguments incorrect"
+   exit 1
+elif [[ ! -e $1 || ! -f $1 ]]; then
+   echo " le fichier $1 n'existe pas et/ou n'est pas un fichier ordinaire"
+    exit 1
+elif [[ ! -r $1 ]]; then
+    echo " le fichier $1 n'a pas les droits de lecture"
+
+    exit 1
+elif [[ ! -e $2 || ! -f $2 ]]; then
+    echo " le fichier $2 n'existe pas et/ou n'est pas un fichier ordinaire"
+
+    exit 1
+elif [[ ! -r $2 ]]; then
+    echo " le fichier $2 n'a pas les droits de lecture"
+    exit 1
+elif [[ -e $3 ]]; then
+    echo " le fichier $3 existe deja"
+
+    exit 1
+
+else
+    cat $1 $2 >> $3
+    echo " concatenation reussie"
+fi

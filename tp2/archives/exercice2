@@ -1,0 +1,11 @@
+#!/bin/bash
+
+for i
+do
+	userinfo=$(cat /etc/passwd | grep $i)
+	shell=${userinfo##*:}
+	home=${userinfo%:*}
+	home=${home##*:}
+	echo "nom:$i, home rep:$home, shell:$shell"
+
+done
