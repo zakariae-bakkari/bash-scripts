@@ -1,5 +1,14 @@
 #!/bin/bash
 
+if [[ ! -f $1 ]]; then
+      echo "Le fichier $1 n'existe pas ou n'est pas un fichier."
+      exit 1
+fi
+
+if [[ ! -w $1 || ! -r $1 ]]; then
+  echo "Le fichier $1 n'a pas les permissions de lecture et d'ecriture." 
+fi
+
 contenu_actuel=$(cat $1)
 date > $1
 echo $contenu_acuel >> $1
