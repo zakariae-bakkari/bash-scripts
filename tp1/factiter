@@ -9,9 +9,14 @@ n=$1
 fact=1
 
 # cas de  n = 0
-if [[ $n == 0 ]]; then
+if (($n == 0)); then
     echo 1
     exit 0
+fi
+
+if (( $n < 0)); then
+    echo "le nombre doit etre positif"
+    exit 1
 fi
 
 for ((i=1; i<=n; i++))

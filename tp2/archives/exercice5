@@ -1,6 +1,9 @@
 #!/bin/bash
 for i 
 do 
+if [[ -f $i ]]; then
   head -n 5 $i
   rm -i $i
+else echo "$i pas un fichier ou il n'exist pas"
+fi 
 done

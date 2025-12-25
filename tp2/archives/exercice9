@@ -36,9 +36,25 @@ while [[ choix != 6 ]]; do
          fi         
          ;;
       3)
-
+         echo "3. Détruire une fiche"
+         echo -n "entrer le nom a supprimer : "
+         read nom
+         grep -v $nom agenda > agendatmp
+         mv agendatmp agenda
+         echo "fiche supprimee"
          ;;
       4) 
+         echo "4. Modifier une fiche"
+         echo -n "entrer le nom a modifier : "
+         read nom
+         echo -n "entrer le nouveau tele : "
+         read tele
+         echo -n "entrer le nouveau nom : "
+         read nvnom
+         grep -v $nom agenda > agendatmp
+         echo "$nvnom,$tele" >> agendatmp
+         mv agendatmp agenda
+         echo "fiche modifiee"
          ;;
       5)
         cat agenda

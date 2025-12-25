@@ -6,6 +6,7 @@ do
 	
 	if [[ -d $rep  ]]
 	then
+	echo "contenu de $rep :"
 	ls $rep
 	fi
 done

@@ -2,7 +2,7 @@
 
 nums=()
 
-while [[ ${#nums[*]} < 6 ]]
+while (( ${#nums[*]} < 6 ))
 do
     n=$((RANDOM % 49 + 1))
     existe=0
@@ -12,7 +12,7 @@ do
             break
         fi
     done
-    if [[ $existe == 0 ]]; then
+    if (( $existe == 0 )); then
         nums[${#nums[*]}]=$n
     fi
 done

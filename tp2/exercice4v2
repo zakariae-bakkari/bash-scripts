@@ -1,9 +1,0 @@
-#!/bin/bash
-
-ls -l | while read ligne
-do
-    if echo "$ligne" | grep -q "^-" ; then
-        echo "$ligne"
-    fi
-done
-

@@ -4,7 +4,7 @@ if [[ ! -e agenda ]]; then
    touch agenda
 fi
 
-while [[ choix != 6 ]]; do
+while true; do
 
    echo "1. Ajouter une nouvelle fiche"
    echo "2. Rechercher une fiche (avec une partie du nom)"
@@ -39,8 +39,8 @@ while [[ choix != 6 ]]; do
          echo "3. Détruire une fiche"
          echo -n "entrer le nom a supprimer : "
          read nom
-         grep -v $nom agenda > agendatmp
-         mv agendatmp agenda
+         grep -v $nom agenda > agenda2
+         mv agenda2 agenda
          echo "fiche supprimee"
          ;;
       4) 
@@ -51,9 +51,9 @@ while [[ choix != 6 ]]; do
          read tele
          echo -n "entrer le nouveau nom : "
          read nvnom
-         grep -v $nom agenda > agendatmp
-         echo "$nvnom,$tele" >> agendatmp
-         mv agendatmp agenda
+         grep -v $nom agenda > agenda2
+         echo "$nvnom,$tele" >> agenda2
+         mv agenda2 agenda
          echo "fiche modifiee"
          ;;
       5)
@@ -63,6 +63,8 @@ while [[ choix != 6 ]]; do
          echo "fin ..."
          exit 1
          ;;  
-      
+      *)
+         echo "choix incorrect"
+         ;;
    esac
 done

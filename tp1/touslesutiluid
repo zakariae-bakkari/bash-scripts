@@ -4,8 +4,8 @@ while read ligne
 do 
 	name=${ligne%%:*}
 
-	reste=${ligne#*:}
-	uid=${reste#*:}
+	uid=${ligne#*:}
+	uid=${uid#*:}
 	uid=${uid%%:*}
 	echo "$name $uid"
 done < /etc/passwd

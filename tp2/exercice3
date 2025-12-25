@@ -1,4 +1,4 @@
 #!/bin/bash
 cat > fich
 echo "le nombre de ligne enregistre est : "
-cat fich | wc -l
+cat fich | wc -l 
