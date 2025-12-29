@@ -2,7 +2,15 @@
 for i 
 do 
 if [[ -f $i ]]; then
-  head -n 5 $i
+  count=0;
+  while read line;do
+    if (( $count < 5 )); then
+      echo $line
+      ((count++))
+    else
+      break
+    fi
+  done < $i
   rm -i $i
 else echo "$i pas un fichier ou il n'exist pas"
 fi 
