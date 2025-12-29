@@ -21,7 +21,9 @@ elif [[ -e $3 ]]; then
     echo " le fichier $3 existe deja"
 
     exit 1
-
+elif [[ ! -w $(dirname $3) ]]; then
+    echo " le repertoire $(dirname $3) n'a pas les droits d'ecriture"
+    exit 1
 else
     cat $1 $2 > $3
     echo " concatenation reussie"
