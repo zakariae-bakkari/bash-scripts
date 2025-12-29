@@ -3,7 +3,7 @@ for i
 do 
 if [[ -f $i ]]; then
   count=0;
-  while read line;do
+  while read line;dof
     if (( $count < 5 )); then
       echo $line
       ((count++))
