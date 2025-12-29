@@ -51,8 +51,14 @@ while true; do
          read tele
          echo -n "entrer le nouveau nom : "
          read nvnom
-         grep -v $nom agenda > agenda2
-         echo "$nvnom,$tele" >> agenda2
+         > agenda2
+         while IFS=',' read -r old_nom old_tele; do
+            if [[ "$old_nom" == "$nom" ]]; then
+               echo "$nvnom,$tele" >> agenda2
+            else
+               echo "$old_nom,$old_tele" >> agenda2
+            fi
+         done < agenda
          mv agenda2 agenda
          echo "fiche modifiee"
          ;;
