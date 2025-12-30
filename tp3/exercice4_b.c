@@ -13,7 +13,7 @@ int main() {
 
     if (pid == 0) {
         execv("/bin/ps", args);
-        perror("Erreur execv");
+        printf("Erreur lors de l'execution de ps\n");
         exit(1);
     }
     else {
