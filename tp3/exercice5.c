@@ -20,7 +20,7 @@ int main() {
     }
 
     fin = wait(&status);
-    printf("Premier processus terminé : PID = %d\n", fin);
+    printf("Premier processus terminé : PID = %d\n ,code de retour: %d", fin, WEXITSTATUS(status));
 
     wait(NULL); // attendre le fils 2
     return 0;
