@@ -10,9 +10,9 @@ int main() {
     pid = fork();
 
     if (pid == 0) { // processus fils
-        execl("/bin/ps", "ps", "-l", NULL);
-        perror("Erreur execl");
-        exit(1);
+        if(execl("/bin/ps", "ps", "-l", NULL) == -1) {
+        printf("Erreur lors de l'execution de ps\n");
+        exit(1);}
     }
     else { // processus père
         wait(&status);
