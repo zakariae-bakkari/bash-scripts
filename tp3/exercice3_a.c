@@ -14,7 +14,6 @@ int main() {
     if (p == 0) { // fils
         srand(time(NULL) ^ getpid()); // pour eviter la meme graine
         int n = rand() % 101;
-        sleep(2000); // pour simuler un traitement long
         return n;
     } 
     else {
