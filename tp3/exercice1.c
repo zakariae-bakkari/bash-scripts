@@ -25,6 +25,7 @@ int main() {
         for (int i = 51; i <= 100; i++) {
             printf("%d ", i);
         }
+        printf("\n");
         return 0;
     }
 

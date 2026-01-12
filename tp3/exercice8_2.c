@@ -24,7 +24,6 @@ int main()
       {
          printf("Erreur lors de la creation du processus pour ps\n");
          exit(-1);
-         
       }
 
       // fils 2

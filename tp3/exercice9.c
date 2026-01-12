@@ -39,13 +39,13 @@ int main()
 {
    char commande[256];
    pid_t pid;
-   do
+   while (1)
    {
       printf("monshell> ");
       scanf(" %255[^\n]", commande);
       if (strcmp(commande, "exit") == 0)
       {
-         exit(-1);
+         break;
       }
       char **table_commande = separer_commande(commande);
 
@@ -58,13 +58,14 @@ int main()
       }
       wait(NULL);
 
-      
+
+      // liberation de la memoire
       for (int i = 0; table_commande[i] != NULL; i++)
       {
          free(table_commande[i]);
       }
       free(table_commande);
-   } while (1);
+   }
 
    return 0;
 }

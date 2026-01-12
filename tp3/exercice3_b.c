@@ -45,7 +45,7 @@ int is_in_tab(int *tab, int length, int val)
 int main()
 {
     int tab[] = {3, 5, 7, 9, 11, 13, 15, 17, 19, 13};
-    int val = 13;
+    int val = 5;
     int length = sizeof(tab) / sizeof(tab[0]);
 
     int result = is_in_tab(tab, length, val);

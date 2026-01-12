@@ -12,13 +12,13 @@ int main() {
     p = fork();
 
     if (p == 0) { // fils
-        srand(time(NULL) ^ getpid()); // pour eviter la meme graine
+        srand(getpid()); // pour eviter la meme graine
         int n = rand() % 101;
         return n;
     } 
     else {
         int status;
-        waitpid(p, &status, 0);// status recupere le status de termiison
+        wait(&status);// status recupere le status de termiison
         printf("status: %d\n", status);
         if (WIFEXITED(status))
         {

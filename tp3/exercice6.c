@@ -5,7 +5,7 @@ int main(int argc, char *argv[]) {
     char cmd[100];
 
     if (argc != 2) {
-        printf("Usage : %s fichier\n", argv[0]);
+        printf("Usage : %s fichier (un seul fichier)\n", argv[0]);
         return 1;
     }
 
