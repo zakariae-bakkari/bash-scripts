@@ -21,7 +21,7 @@ int is_in_tab(int *tab, int length, int val)
                 exit(1);
             }
         }
-        exit(0); 
+        exit(-1); 
     }
     else {
         for (int i = 0; i <= milieu; i++) {
