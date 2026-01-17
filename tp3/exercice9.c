@@ -5,44 +5,67 @@
 #include <sys/wait.h>
 #include <string.h>
 
-void separer_commande(char commande[], char *argv[])
+char **separer_commande(char commande[])
 {
-    int i = 0;
+   int taille = strlen(commande);
+   char **table_commande = malloc(100 * sizeof(char *));
+   int indice = 0;
+   char mot[256];
+   int mot_index = 0;
 
-    char *token = strtok(commande, " ");
-    while (token != NULL)
-    {
-        argv[i++] = token;  // pointeur vers commande
-        token = strtok(NULL, " ");
-    }
-    argv[i] = NULL;
+   for (int i = 0; i <= taille; i++)
+   {
+      if (commande[i] != ' ' && commande[i] != '\0')
+      {
+         mot[mot_index++] = commande[i];
+      }
+      else
+      {
+         if (mot_index > 0)
+         {
+            mot[mot_index] = '\0';
+            table_commande[indice] = malloc((mot_index + 1) * sizeof(char));
+            strcpy(table_commande[indice], mot);
+            indice++;
+            mot_index = 0;
+         }
+      }
+   }
+   table_commande[indice] = NULL; // Null-terminate the array
+   return table_commande;
 }
-
 
 int main()
 {
-    char commande[256];
-    char *argv[20]; // max 20 arguments
-    pid_t pid;
+   char commande[256];
+   pid_t pid;
+   while (1)
+   {
+      printf("monshell> ");
+      scanf(" %255[^\n]", commande);
+      if (strcmp(commande, "exit") == 0)
+      {
+         break;
+      }
+      char **table_commande = separer_commande(commande);
 
-    while (1)
-    {
-        printf("monshell> ");
-        scanf(" %255[^\n]", commande);
+      pid = fork();
+      if (pid == 0)
+      {
+         execvp(table_commande[0], table_commande);
+         perror("execlp");
+         exit(-1);
+      }
+      wait(NULL);
 
-        if (strcmp(commande, "exit") == 0)
-            break;
 
-        separer_commande(commande, argv);
+      // liberation de la memoire
+      for (int i = 0; table_commande[i] != NULL; i++)
+      {
+         free(table_commande[i]);
+      }
+      free(table_commande);
+   }
 
-        pid = fork();
-        if (pid == 0)
-        {
-            execvp(argv[0], argv);
-            perror("execvp");
-            exit(1);
-        }
-        wait(NULL);
-    }
-    return 0;
+   return 0;
 }
