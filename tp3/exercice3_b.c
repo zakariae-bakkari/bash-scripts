@@ -8,38 +8,46 @@ int is_in_tab(int *tab, int length, int val)
 {
     pid_t p;
     int milieu = length / 2;
-    int trouve_parent = 0;
-    int trouve_fils = 0;
     int status;
 
     p = fork();
 
-    if (p == 0) {
-        for (int i = milieu + 1; i < length; i++) {
-            if (tab[i] == val) {
-                printf("Fils: j'ai trouve %d a la position %d\n", val, i + 1);
-                exit(1);
+    if (p == 0)
+    {
+        for (int i = milieu + 1; i < length; i++)
+        {
+            if (tab[i] == val)
+            {
+                printf("Fils: j'ai trouve %d a l'indice %d\n", val, i);
+                exit(i);
             }
         }
-        exit(-1); 
+        exit(-1);
     }
-    else {
-        for (int i = 0; i <= milieu; i++) {
-            if (tab[i] == val) {
-                printf("Pere: j'ai trouve %d a la position %d\n", val, i + 1);
-                trouve_parent = 1;
-                break;
+    else
+    {
+        for (int i = 0; i <= milieu; i++)
+        {
+            if (tab[i] == val)
+            {
+                printf("Pere: j'ai trouve %d a l'indice %d\n", val, i);
+                return i;
             }
         }
 
         waitpid(p, &status, 0);
 
-        if (WIFEXITED(status)) {
-            trouve_fils = WEXITSTATUS(status);
+        if (WIFEXITED(status))
+        {
+            int fils_result = WEXITSTATUS(status);
+            if (fils_result != 255)
+            {
+                return fils_result;
+            }
         }
     }
 
-    return (trouve_parent || trouve_fils);
+    return -1;
 }
 
 int main()
@@ -50,8 +58,8 @@ int main()
 
     int result = is_in_tab(tab, length, val);
 
-    if (result)
-        printf("La valeur %d est presente dans le tableau.\n", val);
+    if (result != -1)
+        printf("La valeur %d est presente dans le tableau a l'indice %d.\n", val, result);
     else
         printf("La valeur %d n'est pas presente dans le tableau.\n", val);
 
