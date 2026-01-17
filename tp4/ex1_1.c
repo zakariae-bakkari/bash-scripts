@@ -22,7 +22,7 @@ int main() {
         // --- Code du FILS (Impairs) ---
         for (int i = 1; i < 100; i += 2) {
             printf("%d ", i);
-            fflush(stdout);
+            fflush(stdout);// fflush pour s'assurer que la sortie est immédiate
             
             // Envoie le signal au père (le père est le PPID du fils)
             kill(getppid(), SIGUSR1);
