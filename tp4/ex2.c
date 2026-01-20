@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <sys/wait.h>
 int main() {
     int pipe1[2]; // Entre ps et grep
     int pipe2[2]; // Entre grep et wc
