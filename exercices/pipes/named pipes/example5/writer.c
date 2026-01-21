@@ -3,8 +3,11 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <string.h>
+#include <sys/stat.h>
 int main()
 {
+   //cree le pipe if not exists
+   mkfifo("mypipe", 0666);
    int fd;
    char message[100];
    sprintf(message, "bonjour du writer [%d]", getpid());

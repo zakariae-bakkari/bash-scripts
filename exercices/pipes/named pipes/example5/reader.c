@@ -2,8 +2,11 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <fcntl.h>
+#include <sys/stat.h>
 int main()
 {
+   // cree le pipe if not exists
+   mkfifo("mypipe", 0666);
    int fd, n;
    char message[100];
    // ouverture du tube mypipe en mode lecture
