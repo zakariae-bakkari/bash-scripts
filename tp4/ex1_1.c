@@ -4,22 +4,18 @@
 #include <signal.h>
 #include <sys/types.h>
 
-// Variables globales pour la synchronisation
-pid_t pid_fils = 0;
-
-// Handler qui ne fait rien, juste pour interrompre le pause()
 void handler(int sig) {
     return;
 }
 
 int main() {
-    pid_t pid;
+    int pid;
     
-    // Installation du gestionnaire de signal
+    // capture de signal
     signal(SIGUSR1, handler);
 
     if ((pid = fork()) == 0) {
-        // --- Code du FILS (Impairs) ---
+      //   fils
         for (int i = 1; i < 100; i += 2) {
             printf("%d ", i);
             fflush(stdout);// fflush pour s'assurer que la sortie est immédiate
