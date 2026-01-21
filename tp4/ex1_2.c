@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <signal.h>
+#include <linux/wait.h>
 
 // Fonction de traitement du signal SIGCHLD
 void fin_fils(int sig)
 {
-    // -1 signifie "n'importe quel fils"
+    while (wait(NULL) > 0); // Nettoie tous les fils terminés
     printf("\n[Info] Un processus fils s'est terminé proprement (Zombie éliminé).\n");
 }
 
