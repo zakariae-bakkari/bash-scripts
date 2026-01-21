@@ -12,17 +12,10 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    if (argc > 2)
+    if (execvp(argv[1], &argv[1]) == -1)
     {
-        execlp(argv[1], argv[1], argv[2], NULL);
-        printf("Erreur lors de l'execution de la commande\n");
-        exit(1);
-    }
-    else
-    {
-        execlp(argv[1], argv[1], NULL);
-        printf("Erreur lors de l'execution de la commande\n");
-        exit(1);
+        perror("Erreur lors de l'execution de la commande");
+        exit(EXIT_FAILURE);
     }
 
     return 0;
