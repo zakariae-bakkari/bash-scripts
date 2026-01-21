@@ -24,8 +24,6 @@ int main()
 {
     pthread_t t1, t2;
 
-    // --- Exec 4.1 ---
-    // --- Exec 4.2 ---
     fichier = fopen("output.txt", "w");
     pthread_create(&t1, NULL, ecrire_1, NULL);
     pthread_create(&t2, NULL, ecrire_2, NULL);
